@@ -20,12 +20,12 @@ public class LC35_SearchInsertPosition {
         int target2=2;//ejemplo donde no esta en la lista
         
         //salida
-        System.out.println(ejercicio(nums,target));
-        System.out.println(ejercicio(nums, target2));
+        System.out.println(searchInsert(nums,target));
+        System.out.println(searchInsert(nums, target2));
     }
     
     //metodo en el cual vamos a averiguar en que posicion se encuentra nuestro target
-    public static int ejercicio(int[] nums,int target){
+    public static int searchInsert(int[] nums,int target){
         
         //variables
         int salida=0;
