@@ -1,7 +1,7 @@
 package LeetCode_Easy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Stack;
 
 public class LT20_Parentesis {
     public static void main(String[] args) {
@@ -13,37 +13,41 @@ public class LT20_Parentesis {
         Open brackets must be closed by the same type of brackets.
         Open brackets must be closed in the correct order.
         Every close bracket has a corresponding open bracket of the same type.
-
-        https://leetcode.com/problems/valid-parentheses/submissions/1160416328/
-        */
-        //variables
-        String s = "{}()";
         
-        //llamadas
+        https://leetcode.com/problems/valid-parentheses/submissions/1160431333/
+        */
+        // Variables
+        String s = "{}()";
+
+        // Llamadas
         System.out.println(isValid(s));
     }
-    //metodo que comprueba si los parentesis introducidos son corretos
+
+    // Método que comprueba si los paréntesis introducidos son correctos
     public static boolean isValid(String s) {
-        //salida
-        HashMap<Character, Character> parentheses = new HashMap<>(); //almacenamos cada apertura con su cierra
+        // Mapa que almacena cada apertura con su cierre
+        HashMap<Character, Character> parentheses = new HashMap<>();
         parentheses.put('{', '}');
         parentheses.put('[', ']');
         parentheses.put('(', ')');
 
-        Stack<Character> stack = new Stack<>(); //donde guardamos todas nuestras aperturas para comparaslas mas comodamente
+        // Lista donde guardamos todas nuestras aperturas para compararlas más cómodamente
+        ArrayList<Character> check = new ArrayList<>();
 
-        //programa
-        for (char c : s.toCharArray()) { //recorremos todos los valores de nuestro String y lo convertimos a array 
-            if (parentheses.containsKey(c)) { 
-                stack.push(c); //guardamos nuestras llaves de apertura temporalmente para compararlas
-            } else if (parentheses.containsValue(c)) { //cuando recibimo un cierre debemos comprobar si este esta contenido anteriormente en nuestro arraya
-                if (stack.isEmpty() || c != parentheses.get(stack.pop())) {//en caso de que nuestro array este vacio o no coincida con la llave correspondiente esta mal
+        // Programa
+        for (char c : s.toCharArray()) {
+            if (parentheses.containsKey(c)) {
+                check.add(c); // Guardamos nuestras llaves de apertura temporalmente para compararlas
+            } else if (parentheses.containsValue(c)) {
+                // Cuando recibimos un cierre, comprobamos si este está contenido anteriormente en nuestra lista
+                if (check.isEmpty() || c != parentheses.get(check.remove(check.size() - 1))) {
+                    // En caso de que nuestra lista esté vacía o no coincida con la llave correspondiente, está mal
                     return false;
                 }
             }
-        }//en caso de que no se ejecute en ningun momento el codigo de dentro quiere decir que esta bien
+        }
 
-        //salida
-        return stack.isEmpty();
+        // En caso de que no se ejecute en ningún momento el código de dentro, significa que está bien
+        return check.isEmpty();
     }
 }
