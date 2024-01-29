@@ -13,6 +13,8 @@ public class LT20_Parentesis {
         Open brackets must be closed by the same type of brackets.
         Open brackets must be closed in the correct order.
         Every close bracket has a corresponding open bracket of the same type.
+
+        https://leetcode.com/problems/valid-parentheses/submissions/1160416328/
         */
         //variables
         String s = "{}()";
