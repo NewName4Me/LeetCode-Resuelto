@@ -36,9 +36,9 @@ public class LT20_Parentesis {
 
         // Programa
         for (char c : s.toCharArray()) {
-            if (parentheses.containsKey(c)) {
+            if (parentheses.containsKey(c)) { //en caso de que tengamos un llave, es decir una apertura lo añadimos a nuestro array de comparacion
                 check.add(c); // Guardamos nuestras llaves de apertura temporalmente para compararlas
-            } else if (parentheses.containsValue(c)) {
+            } else { //claramente cuando no es un apertura o llave debe ser un cierre
                 // Cuando recibimos un cierre, comprobamos si este está contenido anteriormente en nuestra lista
                 if (check.isEmpty() || c != parentheses.get(check.remove(check.size() - 1))) {
                     // En caso de que nuestra lista esté vacía o no coincida con la llave correspondiente, está mal
