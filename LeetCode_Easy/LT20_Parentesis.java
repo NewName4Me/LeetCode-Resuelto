@@ -15,6 +15,12 @@ public class LT20_Parentesis {
         Every close bracket has a corresponding open bracket of the same type.
         
         https://leetcode.com/problems/valid-parentheses/submissions/1160431333/
+        
+        PLANTEAMIENTO:guardamos todo en un hashmap, manteniedndo una relacion entre parentesis de apertura
+        y el de cierre para asi ahorrar condicinales, luego cuando veamos una apartura la guardamos en un arraylist
+        hasta que encontremos un cierre, para que este cierre sea correcto, la anterior apertura se debe corresponder
+        con este, por ende una vez comprobado si escorrecto, eliminamos esta apertura de nuestro array de cierres
+        en  caso de que en cualquier momento alguno falle, termine nuestro metodo
         */
         // Variables
         String s = "{}()";
@@ -42,6 +48,7 @@ public class LT20_Parentesis {
                 // Cuando recibimos un cierre, comprobamos si este está contenido anteriormente en nuestra lista
                 if (check.isEmpty() || c != parentheses.get(check.remove(check.size() - 1))) {
                     // En caso de que nuestra lista esté vacía o no coincida con la llave correspondiente, está mal
+                    //ademas de que nos elimina el ultimo elemento
                     return false;
                 }
             }
